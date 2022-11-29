@@ -226,6 +226,7 @@ int main() {
             clear_input();
             continue;
         }
+        clear_input();
         break;
     }
     switch(chosenDifficulty) {
