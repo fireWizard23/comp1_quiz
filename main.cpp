@@ -8,7 +8,10 @@
 #include <windows.h>
 
 
+
 using namespace std;
+
+
 
 template<typename T>
 std::vector<T> create_copy(std::vector<T> const &vec)
@@ -64,18 +67,31 @@ struct Question {
 };
 
 
+
+
 struct QuestionHistory : public Question {
     public:
         QuestionHistory(
              Question q,
-             int chosenAnswerIndex
+             int chosenAnswerIndex,
+             vector<string> choices
         ) : Question(q.question, q.correctAnswer, q.wrongAnswers) {
+            this-> choices = choices;
             this->chosenAnswerIndex = chosenAnswerIndex;
         }
 
 
         vector<string>  choices;
         int chosenAnswerIndex;
+        bool GotCorrectAnswer() {
+            return choices[chosenAnswerIndex] == correctAnswer;
+        }
+        int GetScore() {
+            if(GotCorrectAnswer()) {
+                return 1;
+            }
+            return 0;
+        }
 };
 
 
@@ -90,6 +106,14 @@ bool validateInput(int input) {
 void clear_input() {
     cin.clear();
     while(cin.get() != '\n') {}
+}
+
+void acout(string h, int ms=20) {
+    for(char c : h) {
+        cout << c;
+
+        Sleep(ms);
+    }
 }
 
 void clear_screen() {
@@ -121,6 +145,8 @@ vector<Question> hardQuestions = {
 
 string prefixes[4] = {"1. ", "2. ", "3. ", "4. "};
 
+vector<QuestionHistory> history = {};
+
 
 
 
@@ -131,22 +157,22 @@ int initiateQuiz(vector<Question> _questions)
     vector<Question> questions = create_copy(_questions);
     int score = 0;
     int questionIndex = 0;
-//    history.questions = questions;
+    history.clear();
 
     for(Question i : questions) {
         clear_screen();
         int answer;
         vector<string> choices = i.getChoices();
-//        history.questionChoices.push_back(choices);
         int questionNumber = questionIndex + 1;
         while(true) {
-            cout << questionNumber << ".) " << i.question  << endl << endl;
+
+            acout(to_string(questionNumber) + ".) " + i.question  +"\n\n", 10);
             int index = 0;
             for(auto choice : choices) {
-                cout << prefixes[index] << choice << endl;
+                acout (prefixes[index] + choice + "\n");
                 index++;
             }
-            cout << endl << "Answer: ";
+            acout ("\nAnswer: ");
             cin >> answer;
             if(cin.fail()|| !validateInput(answer))  {
                 cout << endl;
@@ -156,8 +182,8 @@ int initiateQuiz(vector<Question> _questions)
             break;
         }
 
+        history.push_back( QuestionHistory(i, answer-1, choices) );
         string chosenAnswer = choices[answer-1];
-//        history.chosenAnswers.push_back(answer-1);
         if(chosenAnswer == i.correctAnswer) {
             score++;
         }
@@ -172,8 +198,8 @@ int initiateQuiz(vector<Question> _questions)
 
 int main() {
 
-    cout << "Welcome to Quiz" << endl;
-    cout << "Press ANY key to continue " << endl;
+    acout ("Welcome to Quiz\n");
+    acout ("Press ANY key to continue ");
 
     while(true) {
         if(_kbhit() && getch()) {break;}
@@ -181,9 +207,9 @@ int main() {
 
     clear_screen();
 
-    cout << "Choose the difficulty" << endl;
+    acout("Choose the difficulty\n", 25);
 
-    cout << "1. Easy"<< endl << "2. Medium" << endl << "3. Hard" << endl;
+    acout((string)"1. Easy\n" + "2. Medium\n" + "3. Hard\n");
     int chosenDifficulty;
     vector<Question> questionToAnswer;
     cin >> chosenDifficulty;
@@ -202,29 +228,40 @@ int main() {
         break;
     }
     clear_screen();
+    questionToAnswer = create_copy(questionToAnswer);
     int score = initiateQuiz(questionToAnswer);
+    clear_screen();
+
+
     int index = 0;
 
-//     for(Question question : history.questions) {
-//        cout << index + 1 << ".) " << question.question << endl;
-//        int currentChoiceIndex = 0;
-//        string correctAnswer = history.questionChoices[index] [history.chosenAnswers[index]];
-//        bool gotCorrectAnswer = question.correctAnswer == ;
-//        for(string choices : history.questionChoices[index]) {
-//            cout << choices;
-//            if(!gotCorrectAnswer &&
-//               == ) {
-//                cout << " (Wrong) ";
-//            }
-//            cout << endl;
-//            currentChoiceIndex++;
-//        }
-//        index++;
-//        cout << endl;
-//    }
+    for(QuestionHistory qh : history) {
+
+        cout << ++index << ".) " << qh.question << " (" << qh.GetScore() << "/1) point/s\n\n";
+        Sleep(10);
+        int choiceIndex=0;
+        for(string choice : qh.choices) {
+            cout << choiceIndex+1 << ". " << choice << " ";
+            if(qh.GotCorrectAnswer() && qh.chosenAnswerIndex == choiceIndex) {
+                cout << "(Correctly chosen)";
+            } else {
+                if(qh.choices[choiceIndex] == qh.correctAnswer ) {
+                    cout << "(Correct)";
+                } else if(qh.chosenAnswerIndex == choiceIndex) {
+                    cout << "(Chosen)";
+                }
+            }
+            cout << endl;
+            choiceIndex++;
+            Sleep(10);
+
+        }
+        cout << endl;
+        Sleep(400);
+    }
 
 
-    cout << "YOU SCORED: " << score << " points";
-
+    acout ("YOU SCORED: " + to_string(score) + "/ " + to_string(questionToAnswer.size()) + " points");
+    cin.get();
     return 0;
 }
