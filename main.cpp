@@ -18,7 +18,6 @@ std::vector<T> create_copy(std::vector<T> const &vec)
 {
     std::vector<T> v;
     v.assign(vec.begin(), vec.end());
-
     return v;
 }
 
@@ -165,10 +164,10 @@ int initiateQuiz(vector<Question> _questions)
         int questionNumber = questionIndex + 1;
         while(true) {
 
-            acout(to_string(questionNumber) + ".) " + i.question  +"\n\n", 10);
+            acout(to_string(questionNumber) + ".) " + i.question  +"\n\n");
             int index = 0;
             for(auto choice : choices) {
-                acout (prefixes[index] + choice + "\n",5);
+                acout (prefixes[index] + choice + "\n");
                 index++;
             }
             acout ("\nAnswer: ");
@@ -196,7 +195,6 @@ int initiateQuiz(vector<Question> _questions)
 }
 
 int main() {
-
     acout ("Welcome to Quiz\n");
     acout ("Press ANY key to continue ");
 
