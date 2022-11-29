@@ -279,7 +279,7 @@ int main() {
     }
 
 
-    acout ("YOU SCORED: " + to_string(score) + "/ " + to_string(questionToAnswer.size()) + " points");
+    acout ("YOU SCORED: " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
 
     cin.get();
     return 0;
