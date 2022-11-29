@@ -198,7 +198,7 @@ int initiateQuiz(vector<Question> _questions)
 }
 
 int main() {
-
+    system("COLOR 02");
     acout ("Welcome to Quiz\n");
     acout ("Press ANY key to continue ");
 
