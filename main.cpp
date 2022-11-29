@@ -20,6 +20,13 @@ std::vector<T> create_copy(std::vector<T> const &vec)
     v.assign(vec.begin(), vec.end());
     return v;
 }
+template<typename T>
+void shuffle_vector(vector<T> &vec) {
+    unsigned seed = std::chrono::system_clock::now()
+                        .time_since_epoch()
+                        .count();
+    shuffle(vec.begin(), vec.end(), default_random_engine(seed));
+}
 
 struct Question {
     public:
@@ -53,12 +60,9 @@ struct Question {
     vector<string> getChoices(bool randomize=true) {
         auto choices = create_copy(wrongAnswers);
         choices.push_back(correctAnswer);
-
-        unsigned seed = std::chrono::system_clock::now()
-                        .time_since_epoch()
-                        .count();
         if(randomize) {
-            shuffle(choices.begin(), choices.end(), default_random_engine(seed));
+            shuffle_vector(choices);
+
         }
         return choices;
     }
@@ -195,6 +199,7 @@ int initiateQuiz(vector<Question> _questions)
 }
 
 int main() {
+
     acout ("Welcome to Quiz\n");
     acout ("Press ANY key to continue ");
 
@@ -226,6 +231,7 @@ int main() {
     }
     clear_screen();
     questionToAnswer = create_copy(questionToAnswer);
+    shuffle_vector(questionToAnswer);
     int score = initiateQuiz(questionToAnswer);
     clear_screen();
 
