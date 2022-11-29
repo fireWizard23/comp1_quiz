@@ -111,7 +111,6 @@ void clear_input() {
 void acout(string h, int ms=20) {
     for(char c : h) {
         cout << c;
-
         Sleep(ms);
     }
 }
@@ -232,7 +231,26 @@ int main() {
     int score = initiateQuiz(questionToAnswer);
     clear_screen();
 
+    // Render fake checking...
+    int loops = 15;
+    int dots = 0;
+    while(loops > 0) {
+        clear_screen();
+        cout << "Checking Results";
+        for(int i=0; i < dots; i++) {
+            cout << ".";
+        }
+        dots++;
+        if(dots == 5) {
+            dots = 0;
+        }
+        loops--;
+        Sleep(100);
+    }
+    Sleep(100);
+    clear_screen();
 
+    //Render history
     int index = 0;
 
     for(QuestionHistory qh : history) {
