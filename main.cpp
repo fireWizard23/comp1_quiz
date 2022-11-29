@@ -20,18 +20,25 @@ std::vector<T> create_copy(std::vector<T> const &vec)
 }
 
 struct Question {
-    string question;
-    string correctAnswer;
-    vector<string> wrongAnswers;
+    public:
+        string question;
+        string correctAnswer;
+        vector<string> wrongAnswers;
 
-    Question(
-             string q, string correctAnswer, initializer_list<string> wrongAnswers
-    ):
-        question(q),
-        correctAnswer(correctAnswer),
-        wrongAnswers(wrongAnswers){};
-
-    string debugString() {
+        Question(
+                 string q, string correctAnswer, initializer_list<string> wrongAnswers
+        ):
+            question(q),
+            correctAnswer(correctAnswer),
+            wrongAnswers(wrongAnswers){};
+        Question(
+                 string q, string correctAnswer, vector<string> wrongAnswers
+        ):
+            question(q),
+            correctAnswer(correctAnswer),
+            wrongAnswers(wrongAnswers){};
+        Question() {}
+        string debugString() {
         string wrongs;
         for(auto i : wrongAnswers) {
             wrongs += " " +  i  + " ";
@@ -57,16 +64,18 @@ struct Question {
 };
 
 
-class QuestionHistory {
+struct QuestionHistory : public Question {
     public:
-        vector<Question> questions {};
-        vector<int> chosenAnswers {};
-        vector<vector<string> > questionChoices {};
-        void Reset() {
-            questionChoices.clear();
-            questions.clear();
-            chosenAnswers.clear();
+        QuestionHistory(
+             Question q,
+             int chosenAnswerIndex
+        ) : Question(q.question, q.correctAnswer, q.wrongAnswers) {
+            this->chosenAnswerIndex = chosenAnswerIndex;
         }
+
+
+        vector<string>  choices;
+        int chosenAnswerIndex;
 };
 
 
@@ -112,23 +121,23 @@ vector<Question> hardQuestions = {
 
 string prefixes[4] = {"1. ", "2. ", "3. ", "4. "};
 
-QuestionHistory history = QuestionHistory();
+
 
 
 int initiateQuiz(vector<Question> _questions)
 {
 
-    history.Reset();
+
     vector<Question> questions = create_copy(_questions);
     int score = 0;
     int questionIndex = 0;
-    history.questions = questions;
+//    history.questions = questions;
 
     for(Question i : questions) {
         clear_screen();
         int answer;
         vector<string> choices = i.getChoices();
-        history.questionChoices.push_back(choices);
+//        history.questionChoices.push_back(choices);
         int questionNumber = questionIndex + 1;
         while(true) {
             cout << questionNumber << ".) " << i.question  << endl << endl;
@@ -148,7 +157,7 @@ int initiateQuiz(vector<Question> _questions)
         }
 
         string chosenAnswer = choices[answer-1];
-        history.chosenAnswers.push_back(answer-1);
+//        history.chosenAnswers.push_back(answer-1);
         if(chosenAnswer == i.correctAnswer) {
             score++;
         }
