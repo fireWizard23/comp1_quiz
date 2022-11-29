@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const bool DEBUG = true;
+const bool DEBUG = false;
 
 
 template<typename T>
@@ -149,13 +149,12 @@ string prefixes[4] = {"1. ", "2. ", "3. ", "4. "};
 
 vector<QuestionHistory> history = {};
 
+string playerName = "UNDEFINED";
 
 
 
 int initiateQuiz(vector<Question> _questions)
 {
-
-
     vector<Question> questions = create_copy(_questions);
     int score = 0;
     int questionIndex = 0;
@@ -206,12 +205,20 @@ int main() {
     while(true) {
         if(_kbhit() && getch()) {break;}
     }
+    clear_screen();
+
+    string answer;
+    acout("What is your name? ");
+    cin >> answer;
+    if(answer != "\n") {
+        playerName = answer;
+    }
 
     clear_screen();
 
-    acout("Choose the difficulty\n");
+    acout(playerName + ", please choose the difficulty\n");
 
-    acout((string)"1. Easy\n" + "2. Medium\n" + "3. Hard\n");
+    acout((string)"1. Easy" + "\n" + "2. Medium\n" + "3. Hard\n");
     int chosenDifficulty;
     vector<Question> questionToAnswer;
     cin >> chosenDifficulty;
@@ -283,7 +290,7 @@ int main() {
     }
 
 
-    acout ("YOU SCORED: " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
+    acout (playerName + ", you scored " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
 
     cin.get();
     return 0;
