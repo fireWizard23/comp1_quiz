@@ -256,7 +256,7 @@ int main() {
     for(QuestionHistory qh : history) {
 
         cout << ++index << ".) " << qh.question << " (" << qh.GetScore() << "/1) point/s\n\n";
-        Sleep(10);
+
         int choiceIndex=0;
         for(string choice : qh.choices) {
             cout << choiceIndex+1 << ". " << choice << " ";
@@ -271,11 +271,11 @@ int main() {
             }
             cout << endl;
             choiceIndex++;
-            Sleep(10);
+            Sleep(15);
 
         }
         cout << endl;
-        Sleep(400);
+        Sleep(15);
     }
 
 
