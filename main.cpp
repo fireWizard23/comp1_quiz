@@ -227,12 +227,10 @@ int main() {
     }
     clear_screen();
 
-    string answer;
+
     acout("What is your name? ");
-    cin >> answer;
-    if(answer != " ") {
-        playerName = answer;
-    }
+    cin >> playerName;
+    clear_input();
 
     int chosenDifficulty;
     vector<Question> questionToAnswer;
