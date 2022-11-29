@@ -214,14 +214,20 @@ int main() {
         playerName = answer;
     }
 
-    clear_screen();
-
-    acout(playerName + ", please choose the difficulty\n");
-
-    acout("1. Easy\n2. Medium\n3. Hard\n Enter the number: ");
     int chosenDifficulty;
     vector<Question> questionToAnswer;
-    cin >> chosenDifficulty;
+
+    while(true) {
+        clear_screen();
+        acout(playerName + ", please choose the difficulty\n");
+        acout("1. Easy\n2. Medium\n3. Hard\n Enter the number: ");
+        cin >> chosenDifficulty;
+        if(cin.fail() || chosenDifficulty < 0 || chosenDifficulty > 3) {
+            clear_input();
+            continue;
+        }
+        break;
+    }
     switch(chosenDifficulty) {
     case 1:
         questionToAnswer = easyQuestions;
