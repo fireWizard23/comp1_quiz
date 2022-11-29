@@ -169,7 +169,7 @@ int initiateQuiz(vector<Question> _questions)
             acout(to_string(questionNumber) + ".) " + i.question  +"\n\n", 10);
             int index = 0;
             for(auto choice : choices) {
-                acout (prefixes[index] + choice + "\n");
+                acout (prefixes[index] + choice + "\n",5);
                 index++;
             }
             acout ("\nAnswer: ");
@@ -207,7 +207,7 @@ int main() {
 
     clear_screen();
 
-    acout("Choose the difficulty\n", 25);
+    acout("Choose the difficulty\n");
 
     acout((string)"1. Easy\n" + "2. Medium\n" + "3. Hard\n");
     int chosenDifficulty;
@@ -262,6 +262,7 @@ int main() {
 
 
     acout ("YOU SCORED: " + to_string(score) + "/ " + to_string(questionToAnswer.size()) + " points");
+
     cin.get();
     return 0;
 }
