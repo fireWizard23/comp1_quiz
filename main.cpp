@@ -298,16 +298,24 @@ int main() {
             }
             cout << endl;
             choiceIndex++;
-            Sleep(15);
+            Sleep(20);
 
         }
         cout << endl;
-        Sleep(15);
+        Sleep(20);
     }
 
 
     acout (playerName + ", you scored " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
+    const char *THANK_YOU = R"(
 
+******** **  **     **     **   ** **   **    **    ** ******* **   **
+   **    **  **    *  *    ***  ** **  **      **  **  **   ** **   **
+   **    ******   ******   ** * ** *****         **    **   ** **   **
+   **    **  **  **    **  **  *** **  **        **    **   ** **   **
+   **    **  ** **      ** **   ** **   **       **    ******* *******)";
     cin.get();
+    cout <<endl << endl << THANK_YOU;
+
     return 0;
 }
