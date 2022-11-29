@@ -8,9 +8,9 @@
 #include <windows.h>
 
 
-
 using namespace std;
 
+const bool DEBUG = true;
 
 
 template<typename T>
@@ -111,7 +111,7 @@ void clear_input() {
 void acout(string h, int ms=20) {
     for(char c : h) {
         cout << c;
-        Sleep(ms);
+        if(!DEBUG) {Sleep(ms);}
     }
 }
 
