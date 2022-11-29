@@ -266,6 +266,10 @@ int main() {
     clear_screen();
     questionToAnswer = create_copy(questionToAnswer);
     shuffle_vector(questionToAnswer);
+
+    fakeLoading("Loading questions");
+    Sleep(100);
+
     int score = initiateQuiz(questionToAnswer);
     clear_screen();
 
