@@ -170,7 +170,7 @@ int main() {
         if(_kbhit() && getch()) {break;}
     }
 
-
+    clear_screen();
 
     cout << "Choose the difficulty" << endl;
 
@@ -197,19 +197,21 @@ int main() {
     int index = 0;
 
 //     for(Question question : history.questions) {
-//        cout << question.question << endl;
+//        cout << index + 1 << ".) " << question.question << endl;
 //        int currentChoiceIndex = 0;
+//        string correctAnswer = history.questionChoices[index] [history.chosenAnswers[index]];
+//        bool gotCorrectAnswer = question.correctAnswer == ;
 //        for(string choices : history.questionChoices[index]) {
-//            if(choices == question.correctAnswer) {
-//                cout << "//";
-//            } else if(currentChoiceIndex == history.chosenAnswers[index]) {
-//                cout << "X X";
-//            }
 //            cout << choices;
+//            if(!gotCorrectAnswer &&
+//               == ) {
+//                cout << " (Wrong) ";
+//            }
 //            cout << endl;
 //            currentChoiceIndex++;
 //        }
 //        index++;
+//        cout << endl;
 //    }
 
 
