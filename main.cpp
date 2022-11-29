@@ -122,6 +122,26 @@ void clear_screen() {
     system("CLS");
 }
 
+void fakeLoading(string message) {
+
+    int loops = 15;
+    int dots = 0;
+    while(loops > 0) {
+        clear_screen();
+        cout << message;
+        for(int i=0; i < dots; i++) {
+            cout << ".";
+        }
+        dots++;
+        if(dots == 5) {
+            dots = 0;
+        }
+        loops--;
+        Sleep(100);
+    }
+}
+
+
 vector<Question> easyQuestions = {
     Question("Easy Who invented the first calculator?", "Correct Answer", {"Wrong", "Eminem", "Dwayne Johnson"}),
     Question("Easy Who invented the second calculator?", "Correct Answer", {"Jackie Chad", "Willie Wonka", "Dwayne Johnson"}),
@@ -250,21 +270,8 @@ int main() {
     clear_screen();
 
     // Render fake checking...
-    int loops = 15;
-    int dots = 0;
-    while(loops > 0) {
-        clear_screen();
-        cout << "Checking Results";
-        for(int i=0; i < dots; i++) {
-            cout << ".";
-        }
-        dots++;
-        if(dots == 5) {
-            dots = 0;
-        }
-        loops--;
-        Sleep(100);
-    }
+    fakeLoading("Checking results");
+
     Sleep(100);
     clear_screen();
 
