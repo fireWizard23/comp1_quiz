@@ -173,7 +173,7 @@ int initiateQuiz(vector<Question> _questions)
                 acout (prefixes[index] + choice + "\n");
                 index++;
             }
-            acout ("\nAnswer: ");
+            acout ("\nAnswer (number only): ");
             cin >> answer;
             if(cin.fail()|| !validateInput(answer))  {
                 cout << endl;
@@ -210,7 +210,7 @@ int main() {
     string answer;
     acout("What is your name? ");
     cin >> answer;
-    if(answer != "\n") {
+    if(answer != " ") {
         playerName = answer;
     }
 
@@ -218,7 +218,7 @@ int main() {
 
     acout(playerName + ", please choose the difficulty\n");
 
-    acout((string)"1. Easy" + "\n" + "2. Medium\n" + "3. Hard\n");
+    acout("1. Easy\n2. Medium\n3. Hard\n Enter the number: ");
     int chosenDifficulty;
     vector<Question> questionToAnswer;
     cin >> chosenDifficulty;
