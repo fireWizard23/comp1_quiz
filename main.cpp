@@ -231,8 +231,8 @@ int main() {
 
 
     acout("What is your name? ");
-    cin >> playerName;
-    clear_input();
+    getline(cin, playerName);
+
 
     int chosenDifficulty;
     vector<Question> questionToAnswer;
