@@ -178,13 +178,14 @@ string playerName = "UNDEFINED";
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 #define KEY_ENTER 13
+#define KEY_SPACE 32
 #define KEY_W 119
 #define KEY_S 115
 
 const std::string reset("\033[32;40m");
 const std::string magenta("\033[0;35m");
 
-int interactiveInput(string label,vector<string> choices, string endLabel="Press ENTER to select") {
+int interactiveInput(string label,vector<string> choices, string endLabel="Press ENTER/SPACE to select") {
     int _index=0;
     int c = 0;
     bool looping = true;
@@ -247,9 +248,12 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
             }
             break;
         case KEY_ENTER:
+        case KEY_SPACE:
             looping = false;
             break;
-
+        default:
+            cout << c;
+            break;
         }
     }
     return _index;
