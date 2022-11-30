@@ -218,6 +218,57 @@ int initiateQuiz(vector<Question> _questions)
 
 }
 
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+#define KEY_ENTER 13
+int interactiveInput(string label,vector<string> choices, string endLabel="Press ENTER to select") {
+    int _index=0;
+    int c = 0;
+    bool looping = true;
+    int length = choices.size();
+
+    while(looping) {
+        clear_screen();
+        cout << label;
+        int choiceIndex = 0;
+        for(string h : choices) {
+            if(_index == choiceIndex) {
+                cout << "**";
+            } else {
+                cout << "  ";
+            }
+            cout << h;
+            if(_index == choiceIndex) {
+                cout << "**";
+            }
+            cout << endl;
+            choiceIndex++;
+        }
+        cout << endLabel;
+
+        switch(c=getch()) {
+        case KEY_UP:
+            if(_index > 0) {
+                _index--;
+            }
+            break;
+        case KEY_DOWN:
+            if(_index < length) {
+                _index++;
+            }
+            break;
+        case KEY_ENTER:
+            looping = false;
+            break;
+
+        }
+    }
+    return _index;
+}
+
+
 int main() {
     system("COLOR 02");
     acout ("Welcome to Quiz\n");
@@ -233,29 +284,20 @@ int main() {
     getline(cin, playerName);
 
 
-    int chosenDifficulty;
-    vector<Question> questionToAnswer;
 
-    while(true) {
-        clear_screen();
-        acout(playerName + ", please choose the difficulty\n");
-        acout("1. Easy\n2. Medium\n3. Hard\n Enter the number: ");
-        cin >> chosenDifficulty;
-        if(cin.fail() || chosenDifficulty < 0 || chosenDifficulty > 3) {
-            clear_input();
-            continue;
-        }
-        clear_input();
-        break;
-    }
+
+    int chosenDifficulty = interactiveInput(playerName + ", please choose the difficulty\n", vector<string> {"Easy", "Medium", "Hard"});
+
+
+    vector<Question> questionToAnswer;
     switch(chosenDifficulty) {
-    case 1:
+    case 0:
         questionToAnswer = easyQuestions;
         break;
-    case 2:
+    case 1:
         questionToAnswer = mediumQuestions;
         break;
-    case 3:
+    case 2:
         questionToAnswer = hardQuestions;
         break;
     default:
