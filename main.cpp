@@ -309,6 +309,9 @@ int main() {
 
 
     acout (playerName + ", you scored " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
+
+    cin.get();
+
     const char *THANK_YOU = R"(
 
 ******** **  **     **     **   ** **   **    **    ** ******* **   **
@@ -317,7 +320,7 @@ int main() {
    **    **  **  **    **  **  *** **  **        **    **   ** **   **
    **    **  ** **      ** **   ** **   **       **    ******* *******
    )";
-    cin.get();
+
     cout <<endl << endl;
     vector<string> arr;
     string nice = "";
