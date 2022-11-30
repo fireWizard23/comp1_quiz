@@ -173,51 +173,6 @@ vector<QuestionHistory> history = {};
 string playerName = "UNDEFINED";
 
 
-
-int initiateQuiz(vector<Question> _questions)
-{
-    vector<Question> questions = create_copy(_questions);
-    int score = 0;
-    int questionIndex = 0;
-    history.clear();
-
-    for(Question i : questions) {
-        clear_screen();
-        int answer;
-        vector<string> choices = i.getChoices();
-        int questionNumber = questionIndex + 1;
-        while(true) {
-
-            acout(to_string(questionNumber) + ".) " + i.question  +"\n\n");
-            int index = 0;
-            for(auto choice : choices) {
-                acout (prefixes[index] + choice + "\n");
-                index++;
-            }
-            acout ("\nAnswer (number only): ");
-            cin >> answer;
-            if(cin.fail()|| !validateInput(answer))  {
-                cout << endl;
-                clear_input();
-                continue;
-            }
-            break;
-        }
-
-        history.push_back( QuestionHistory(i, answer-1, choices) );
-        string chosenAnswer = choices[answer-1];
-        if(chosenAnswer == i.correctAnswer) {
-            score++;
-        }
-        questionIndex++;
-        cout << endl;
-        clear_input();
-    }
-
-    return score;
-
-}
-
 #define KEY_UP 72
 #define KEY_DOWN 80
 #define KEY_LEFT 75
@@ -227,12 +182,30 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
     int _index=0;
     int c = 0;
     bool looping = true;
-    int length = choices.size();
+    int choiceIndex = 0;
+    int maxNum = choices.size()-1;
 
+    clear_screen();
+    acout(label);
+    for(string h : choices) {
+        if(_index == choiceIndex) {
+            acout("**");
+        } else {
+            acout("  ");
+        }
+        acout(h);
+        if(_index == choiceIndex) {
+            acout("**");
+        }
+        acout("\n");
+        choiceIndex++;
+    }
+        acout(endLabel);
     while(looping) {
+        choiceIndex = 0;
         clear_screen();
         cout << label;
-        int choiceIndex = 0;
+
         for(string h : choices) {
             if(_index == choiceIndex) {
                 cout << "**";
@@ -255,7 +228,7 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
             }
             break;
         case KEY_DOWN:
-            if(_index < length) {
+            if(_index < maxNum) {
                 _index++;
             }
             break;
@@ -267,6 +240,38 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
     }
     return _index;
 }
+
+
+int initiateQuiz(vector<Question> _questions)
+{
+    vector<Question> questions = create_copy(_questions);
+    int score = 0;
+    int questionIndex = 0;
+    history.clear();
+
+    for(Question i : questions) {
+        clear_screen();
+        vector<string> choices = i.getChoices();
+        int questionNumber = questionIndex + 1;
+        int answer =
+            interactiveInput(to_string(questionNumber) + ".) " + i.question  +"\n\n",
+                             choices);
+
+        history.push_back( QuestionHistory(i, answer, choices) );
+        string chosenAnswer = choices[answer];
+        if(chosenAnswer == i.correctAnswer) {
+            score++;
+        }
+        questionIndex++;
+        cout << endl;
+
+    }
+
+    return score;
+
+}
+
+
 
 
 int main() {
