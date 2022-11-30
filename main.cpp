@@ -181,6 +181,9 @@ string playerName = "UNDEFINED";
 #define KEY_W 119
 #define KEY_S 115
 
+const std::string reset("\033[32;40m");
+const std::string magenta("\033[0;35m");
+
 int interactiveInput(string label,vector<string> choices, string endLabel="Press ENTER to select") {
     int _index=0;
     int c = 0;
@@ -192,6 +195,7 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
     acout(label);
     for(string h : choices) {
         if(_index == choiceIndex) {
+            cout << magenta;
             acout("**");
         } else {
             acout("  ");
@@ -199,6 +203,7 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
         acout(h);
         if(_index == choiceIndex) {
             acout("**");
+            cout << reset;
         }
         acout("\n");
         choiceIndex++;
@@ -211,13 +216,15 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
 
         for(string h : choices) {
             if(_index == choiceIndex) {
+                cout << magenta;
                 cout << "**";
             } else {
                 cout << "  ";
             }
             cout << h;
             if(_index == choiceIndex) {
-                cout << "**";
+                cout << "**" << reset;
+
             }
             cout << endl;
             choiceIndex++;
