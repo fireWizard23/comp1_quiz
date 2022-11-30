@@ -27,6 +27,8 @@ void shuffle_vector(vector<T> &vec) {
     shuffle(vec.begin(), vec.end(), default_random_engine(seed));
 }
 
+void MSleep(int ms) {Sleep(ms); if(_kbhit()) {getch();}}
+
 struct Question {
     public:
         string question;
@@ -113,7 +115,7 @@ void clear_input() {
 void acout(string h, int ms=20) {
     for(char c : h) {
         cout << c;
-        if(!DEBUG) {Sleep(ms); if(_kbhit()) {getch();}}
+        if(!DEBUG) {MSleep(ms); }
     }
 }
 
@@ -137,7 +139,7 @@ void fakeLoading(string message, int ms=1500) {
         }
         loops--;
         if(!DEBUG) {
-            Sleep(MS);
+            MSleep(MS);
         }
     }
 }
@@ -327,7 +329,7 @@ int main() {
     shuffle_vector(questionToAnswer);
 
     fakeLoading("Loading questions", questionToAnswer.size() * 100);
-    Sleep(100);
+    MSleep(100);
 
     int score = initiateQuiz(questionToAnswer);
     clear_screen();
@@ -335,7 +337,7 @@ int main() {
     // Render fake checking...
     fakeLoading("Checking results", questionToAnswer.size() * 100);
 
-    Sleep(100);
+    MSleep(100);
     clear_screen();
 
     //Render history
@@ -359,11 +361,11 @@ int main() {
             }
             cout << endl;
             choiceIndex++;
-            Sleep(20);
+            MSleep(20);
 
         }
         cout << endl;
-        Sleep(20);
+        MSleep(20);
 
     }
 
@@ -394,7 +396,7 @@ int main() {
     }
     for(string s : arr) {
         cout << s;
-        Sleep(100);
+        MSleep(100);
     }
     cout << endl << endl;
 
