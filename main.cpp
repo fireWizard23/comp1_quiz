@@ -288,15 +288,17 @@ int initiateQuiz(vector<Question> _questions)
 
 
 
-
 int main() {
     system("COLOR 02");
-    acout ("Welcome to Quiz\n");
-    acout ("Press ANY key to continue ");
+    vector<string> menuChoices = {"Play","Exit"};
 
-    while(true) {
-        if(_kbhit() && getch()) {break;}
+    switch(interactiveInput("Welcome to Quiz\n", menuChoices)) {
+    case 0:
+        break;
+    case 1:
+        return 0;
     }
+
     clear_screen();
 
 
