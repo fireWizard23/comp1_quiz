@@ -371,7 +371,7 @@ int main() {
 
 
     acout (playerName + ", you scored " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
-
+    cout << endl << "Press ENTER to continue    ";
     cin.get();
 
     const char *THANK_YOU = R"(
