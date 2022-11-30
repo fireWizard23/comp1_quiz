@@ -113,7 +113,7 @@ void clear_input() {
 void acout(string h, int ms=20) {
     for(char c : h) {
         cout << c;
-        if(!DEBUG) {Sleep(ms);}
+        if(!DEBUG) {Sleep(ms); if(_kbhit()) {getch();}}
     }
 }
 
@@ -197,15 +197,13 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
     for(string h : choices) {
         if(_index == choiceIndex) {
             cout << magenta;
-            acout("**");
+            acout("=>");
         } else {
             acout("  ");
         }
         acout(h);
-        if(_index == choiceIndex) {
-            acout("**");
-            cout << reset;
-        }
+        cout << reset;
+
         acout("\n");
         choiceIndex++;
     }
@@ -218,15 +216,14 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
         for(string h : choices) {
             if(_index == choiceIndex) {
                 cout << magenta;
-                cout << "**";
+                cout << "=>";
             } else {
                 cout << "  ";
             }
             cout << h;
-            if(_index == choiceIndex) {
-                cout << "**" << reset;
 
-            }
+            cout << reset;
+
             cout << endl;
             choiceIndex++;
         }
@@ -367,6 +364,7 @@ int main() {
         }
         cout << endl;
         Sleep(20);
+
     }
 
 
