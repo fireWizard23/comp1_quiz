@@ -303,7 +303,7 @@ int main() {
 
     acout("What is your name? ");
     getline(cin, playerName);
-
+    playerName = playerName.substr(0,30);
 
 
 
