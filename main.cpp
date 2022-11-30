@@ -1,10 +1,9 @@
 #include <iostream>
-#include <array>
 #include <vector>
 #include <algorithm>
 #include <random>
 #include <chrono>
-#include <conio.h>
+#include<conio.h>
 #include <windows.h>
 
 
