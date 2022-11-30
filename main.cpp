@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const bool DEBUG = false;
+const bool DEBUG = true;
 
 
 template<typename T>
@@ -137,7 +137,9 @@ void fakeLoading(string message) {
             dots = 0;
         }
         loops--;
-        Sleep(100);
+        if(!DEBUG) {
+            Sleep(100);
+        }
     }
 }
 
@@ -313,9 +315,25 @@ int main() {
    **    **  **    *  *    ***  ** **  **      **  **  **   ** **   **
    **    ******   ******   ** * ** *****         **    **   ** **   **
    **    **  **  **    **  **  *** **  **        **    **   ** **   **
-   **    **  ** **      ** **   ** **   **       **    ******* *******)";
+   **    **  ** **      ** **   ** **   **       **    ******* *******
+   )";
     cin.get();
-    cout <<endl << endl << THANK_YOU;
+    cout <<endl << endl;
+    vector<string> arr;
+    string nice = "";
+    for(int i =0; i < ((string) THANK_YOU).length(); i++) {
+        char c = THANK_YOU[i];
+        if(c == '\n') {
+            arr.push_back(nice);
+            nice = "";
+        }
+        nice+=c;
+    }
+    for(string s : arr) {
+        cout << s;
+        Sleep(100);
+    }
+    cout << endl << endl;
 
     return 0;
 }
