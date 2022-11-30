@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const bool DEBUG = true;
+const bool DEBUG = false;
 
 
 template<typename T>
@@ -122,9 +122,9 @@ void clear_screen() {
     system("CLS");
 }
 
-void fakeLoading(string message) {
-
-    int loops = 15;
+void fakeLoading(string message, int ms=1500) {
+    const int MS = 100;
+    int loops = (ms/MS);
     int dots = 0;
     while(loops > 0) {
         clear_screen();
@@ -138,7 +138,7 @@ void fakeLoading(string message) {
         }
         loops--;
         if(!DEBUG) {
-            Sleep(100);
+            Sleep(MS);
         }
     }
 }
@@ -267,14 +267,14 @@ int main() {
     questionToAnswer = create_copy(questionToAnswer);
     shuffle_vector(questionToAnswer);
 
-    fakeLoading("Loading questions");
+    fakeLoading("Loading questions", questionToAnswer.size() * 100);
     Sleep(100);
 
     int score = initiateQuiz(questionToAnswer);
     clear_screen();
 
     // Render fake checking...
-    fakeLoading("Checking results");
+    fakeLoading("Checking results", questionToAnswer.size() * 100);
 
     Sleep(100);
     clear_screen();
