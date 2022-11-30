@@ -178,6 +178,9 @@ string playerName = "UNDEFINED";
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 #define KEY_ENTER 13
+#define KEY_W 119
+#define KEY_S 115
+
 int interactiveInput(string label,vector<string> choices, string endLabel="Press ENTER to select") {
     int _index=0;
     int c = 0;
@@ -223,13 +226,17 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
 
         switch(c=getch()) {
         case KEY_UP:
-            if(_index > 0) {
-                _index--;
+        case KEY_W:
+            _index--;
+            if(_index < 0) {
+                _index = maxNum;
             }
             break;
         case KEY_DOWN:
-            if(_index < maxNum) {
-                _index++;
+        case KEY_S:
+            _index++;
+            if(_index > maxNum) {
+                _index = 0;
             }
             break;
         case KEY_ENTER:
