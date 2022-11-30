@@ -195,7 +195,7 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
     int maxNum = choices.size()-1;
 
     clear_screen();
-    acout(label);
+    acout(label + "\n");
     for(string h : choices) {
         if(_index == choiceIndex) {
             cout << magenta;
@@ -209,11 +209,11 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
         acout("\n");
         choiceIndex++;
     }
-        acout(endLabel);
+    acout("\n" + endLabel);
     while(looping) {
         choiceIndex = 0;
         clear_screen();
-        cout << label;
+        cout << label << endl;
 
         for(string h : choices) {
             if(_index == choiceIndex) {
@@ -229,7 +229,7 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
             cout << endl;
             choiceIndex++;
         }
-        cout << endLabel;
+        cout << endl << endLabel;
 
         switch(c=getch()) {
         case KEY_UP:
@@ -269,7 +269,7 @@ int initiateQuiz(vector<Question> _questions)
         vector<string> choices = i.getChoices();
         int questionNumber = questionIndex + 1;
         int answer =
-            interactiveInput(to_string(questionNumber) + ".) " + i.question  +"\n\n",
+            interactiveInput(to_string(questionNumber) + ".) " + i.question  +"\n",
                              choices);
 
         history.push_back( QuestionHistory(i, answer, choices) );
