@@ -251,9 +251,7 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
         case KEY_SPACE:
             looping = false;
             break;
-        default:
-            cout << c;
-            break;
+
         }
     }
     return _index;
