@@ -302,7 +302,9 @@ int main() {
 
     acout("What is your name? ");
     getline(cin, playerName);
+    bool nameExceededLength = playerName.length() >= 30;
     playerName = playerName.substr(0,30);
+    playerName += "...";
 
 
 
