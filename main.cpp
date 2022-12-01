@@ -9,7 +9,7 @@
 
 using namespace std;
 
-const bool DEBUG = true;
+const bool DEBUG = false;
 
 
 template<typename T>
@@ -27,7 +27,7 @@ void shuffle_vector(vector<T> &vec) {
     shuffle(vec.begin(), vec.end(), default_random_engine(seed));
 }
 
-void MSleep(int ms) {Sleep(ms); if(_kbhit()) {getch();}}
+void MSleep(int ms) {Sleep(ms); }
 
 vector<string> splitStringToLines(string h) {
     vector<string> arr;
@@ -42,6 +42,12 @@ vector<string> splitStringToLines(string h) {
     }
     return arr;
 }
+
+class CoutAnimation {
+    public:
+        bool isAnimating=true;
+        void cancel() {isAnimating = false;}
+};
 
 struct Question {
     public:
@@ -126,10 +132,20 @@ void clear_input() {
     while(cin.get() != '\n') {}
 }
 
-void acout(string h, int ms=20) {
+void acout(string h,bool skippable =true,int ms=20) {
+    int index = 0;
     for(char c : h) {
         cout << c;
-        if(!DEBUG) {MSleep(ms); }
+        index++;
+        if(!DEBUG) {
+            MSleep(ms);
+            if(skippable && _kbhit()) {
+                getch();
+                string rest = h.substr(index);
+                cout << rest;
+                break;
+            }
+        }
     }
 }
 
