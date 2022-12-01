@@ -404,13 +404,12 @@ int main() {
 
 
         acout (playerName + ", you scored " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
-        cout << endl << "Press ANY key to continue" << endl;
+        cout << endl << "Press ENTER key to continue" << endl;
         while(true) {
+            if(_kbhit() && getch() == KEY_ENTER) {
 
-            if(_kbhit()) {
-                getch();
-                break;
-            }
+                break;}
+
         }
         const vector<string> _ = {"Play again", "Quit"};
         int shouldQuit = interactiveInput("Play again?", _);
