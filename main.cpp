@@ -185,7 +185,7 @@ string playerName = "UNDEFINED";
 const std::string reset("\033[32;40m");
 const std::string magenta("\033[0;35m");
 
-int interactiveInput(string label,vector<string> choices, string endLabel="Press ENTER/SPACE to select. Arrow keys to move. ") {
+int interactiveInput(string label,vector<string> choices, string endLabel="Press ENTER/SPACE to select. Arrow keys to move. \n") {
     int _index=0;
     int c = 0;
     bool looping = true;
