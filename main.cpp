@@ -193,7 +193,7 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
     int maxNum = choices.size()-1;
 
     clear_screen();
-    acout(label + "\n");
+    acout(label + "\n\n");
     for(string h : choices) {
         if(_index == choiceIndex) {
             cout << magenta;
@@ -211,7 +211,7 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
     while(looping) {
         choiceIndex = 0;
         clear_screen();
-        cout << label << endl;
+        cout << label << endl << endl;
 
         for(string h : choices) {
             if(_index == choiceIndex) {
@@ -267,7 +267,7 @@ int initiateQuiz(vector<Question> _questions)
         vector<string> choices = i.getChoices();
         int questionNumber = questionIndex + 1;
         int answer =
-            interactiveInput(to_string(questionNumber) + ".) " + i.question  +"\n",
+            interactiveInput(to_string(questionNumber) + ".) " + i.question,
                              choices);
 
         history.push_back( QuestionHistory(i, answer, choices) );
@@ -290,7 +290,7 @@ int main() {
     system("COLOR 02");
     vector<string> menuChoices = {"Play","Exit"};
 
-    switch(interactiveInput("Welcome to Quiz\n", menuChoices)) {
+    switch(interactiveInput("Welcome to Quiz", menuChoices)) {
     case 0:
         break;
     case 1:
@@ -307,7 +307,7 @@ int main() {
 
 
     while(true) {
-        int chosenDifficulty = interactiveInput(playerName + ", please choose the difficulty\n", vector<string> {"Easy", "Medium", "Hard"});
+        int chosenDifficulty = interactiveInput(playerName + ", please choose the difficulty", vector<string> {"Easy", "Medium", "Hard"});
         vector<Question> questionToAnswer;
         switch(chosenDifficulty) {
         case 0:
