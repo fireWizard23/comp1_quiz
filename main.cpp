@@ -224,18 +224,20 @@ int interactiveInput(string label,vector<string> choices, string endLabel="Press
 
     clear_screen();
     acout(label + "\n\n");
+    MSleep(75);
     for(string h : choices) {
         if(_index == choiceIndex) {
             cout << magenta;
-            acout("=>");
+            cout<<"=>";
         } else {
-            acout("  ");
+            cout<< "  ";
         }
-        acout(h);
+        cout<< h;
         cout << reset;
 
-        acout("\n");
+        cout<< "\n";
         choiceIndex++;
+    MSleep(75);
     }
     acout("\n" + endLabel);
     while(looping) {
