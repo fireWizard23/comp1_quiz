@@ -336,7 +336,9 @@ int main() {
     getline(cin, playerName);
     bool nameExceededLength = playerName.length() >= 30;
     playerName = playerName.substr(0,30);
-    playerName += "...";
+    if(nameExceededLength) {
+        playerName += "...";
+    }
 
 
 
