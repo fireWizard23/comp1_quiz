@@ -32,7 +32,7 @@ void MSleep(int ms) {Sleep(ms); }
 vector<string> splitStringToLines(string h) {
     vector<string> arr;
     string nice = "";
-    for(int i =0; i < h.length(); i++) {
+    for(unsigned int i =0; i < h.length(); i++) {
         char c = h[i];
         if(c == '\n') {
             arr.push_back(nice);
