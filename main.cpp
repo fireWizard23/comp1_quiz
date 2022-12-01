@@ -68,15 +68,7 @@ struct Question {
             correctAnswer(correctAnswer),
             wrongAnswers(wrongAnswers){};
         Question() {}
-        string debugString() {
-        string wrongs;
-        for(auto i : wrongAnswers) {
-            wrongs += " " +  i  + " ";
-        }
-        return "Question: " + question + "\n"
-        + "Correct Answer: " + correctAnswer +  "\n" +
-         "Wrong Answers: " + wrongs+ "\n";
-    }
+
 
     vector<string> getChoices(bool randomize=true) {
         auto choices = create_copy(wrongAnswers);
