@@ -45,13 +45,6 @@ vector<string> splitStringToLines(string h)
     return arr;
 }
 
-class CoutAnimation
-{
-public:
-    bool isAnimating = true;
-    void cancel() { isAnimating = false; }
-};
-
 struct Question
 {
 public:
