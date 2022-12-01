@@ -9,7 +9,7 @@
 
 using namespace std;
 
-const bool DEBUG = false;
+const bool DEBUG = true;
 
 
 template<typename T>
@@ -306,73 +306,87 @@ int main() {
 
 
 
-    int chosenDifficulty = interactiveInput(playerName + ", please choose the difficulty\n", vector<string> {"Easy", "Medium", "Hard"});
+    while(true) {
+        int chosenDifficulty = interactiveInput(playerName + ", please choose the difficulty\n", vector<string> {"Easy", "Medium", "Hard"});
+        vector<Question> questionToAnswer;
+        switch(chosenDifficulty) {
+        case 0:
+            questionToAnswer = easyQuestions;
+            break;
+        case 1:
+            questionToAnswer = mediumQuestions;
+            break;
+        case 2:
+            questionToAnswer = hardQuestions;
+            break;
+        default:
+            questionToAnswer = easyQuestions;
+            break;
+        }
+        clear_screen();
+        questionToAnswer = create_copy(questionToAnswer);
+        shuffle_vector(questionToAnswer);
 
+        fakeLoading("Loading questions", questionToAnswer.size() * 100);
+        MSleep(100);
 
-    vector<Question> questionToAnswer;
-    switch(chosenDifficulty) {
-    case 0:
-        questionToAnswer = easyQuestions;
-        break;
-    case 1:
-        questionToAnswer = mediumQuestions;
-        break;
-    case 2:
-        questionToAnswer = hardQuestions;
-        break;
-    default:
-        questionToAnswer = easyQuestions;
-        break;
-    }
-    clear_screen();
-    questionToAnswer = create_copy(questionToAnswer);
-    shuffle_vector(questionToAnswer);
+        int score = initiateQuiz(questionToAnswer);
+        clear_screen();
 
-    fakeLoading("Loading questions", questionToAnswer.size() * 100);
-    MSleep(100);
+        // Render fake checking...
+        fakeLoading("Checking results", questionToAnswer.size() * 100);
 
-    int score = initiateQuiz(questionToAnswer);
-    clear_screen();
+        MSleep(100);
+        clear_screen();
 
-    // Render fake checking...
-    fakeLoading("Checking results", questionToAnswer.size() * 100);
+        //Render history
+        int index = 0;
 
-    MSleep(100);
-    clear_screen();
+        for(QuestionHistory qh : history) {
 
-    //Render history
-    int index = 0;
+            cout << ++index << ".) " << qh.question << " (" << qh.GetScore() << "/1) point/s\n\n";
 
-    for(QuestionHistory qh : history) {
-
-        cout << ++index << ".) " << qh.question << " (" << qh.GetScore() << "/1) point/s\n\n";
-
-        int choiceIndex=0;
-        for(string choice : qh.choices) {
-            cout << choiceIndex+1 << ". " << choice << " ";
-            if(qh.GotCorrectAnswer() && qh.chosenAnswerIndex == choiceIndex) {
-                cout << "(Correctly chosen)";
-            } else {
-                if(qh.choices[choiceIndex] == qh.correctAnswer ) {
-                    cout << "(Correct)";
-                } else if(qh.chosenAnswerIndex == choiceIndex) {
-                    cout << "(Chosen)";
+            int choiceIndex=0;
+            for(string choice : qh.choices) {
+                cout << choiceIndex+1 << ". " << choice << " ";
+                if(qh.GotCorrectAnswer() && qh.chosenAnswerIndex == choiceIndex) {
+                    cout << "(Correctly chosen)";
+                } else {
+                    if(qh.choices[choiceIndex] == qh.correctAnswer ) {
+                        cout << "(Correct)";
+                    } else if(qh.chosenAnswerIndex == choiceIndex) {
+                        cout << "(Chosen)";
+                    }
                 }
+                cout << endl;
+                choiceIndex++;
+                MSleep(20);
+
             }
             cout << endl;
-            choiceIndex++;
             MSleep(20);
 
         }
-        cout << endl;
-        MSleep(20);
+
+
+        acout (playerName + ", you scored " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
+        cout << endl << "Press ANY key to continue" << endl;
+        while(true) {
+
+            if(_kbhit()) {
+                getch();
+                break;
+            }
+        }
+        const vector<string> _ = {"Play again", "Quit"};
+        int shouldQuit = interactiveInput("Play again?", _);
+        if(shouldQuit == 0) {
+            continue;
+        }
+        break;
 
     }
 
-
-    acout (playerName + ", you scored " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
-    cout << endl << "Press ENTER to continue    ";
-    cin.get();
 
     const char *THANK_YOU = R"(
 
