@@ -29,6 +29,20 @@ void shuffle_vector(vector<T> &vec) {
 
 void MSleep(int ms) {Sleep(ms); if(_kbhit()) {getch();}}
 
+vector<string> splitStringToLines(string h) {
+    vector<string> arr;
+    string nice = "";
+    for(int i =0; i < h.length(); i++) {
+        char c = h[i];
+        if(c == '\n') {
+            arr.push_back(nice);
+            nice = "";
+        }
+        nice+=c;
+    }
+    return arr;
+}
+
 struct Question {
     public:
         string question;
@@ -390,7 +404,7 @@ int main() {
     }
 
 
-    const char *THANK_YOU = R"(
+    const string THANK_YOU = R"(
 
 ******** **  **     **     **   ** **   **    **    ** ******* **   **
    **    **  **    *  *    ***  ** **  **      **  **  **   ** **   **
@@ -399,17 +413,9 @@ int main() {
    **    **  ** **      ** **   ** **   **       **    ******* *******
    )";
 
+
     cout <<endl << endl;
-    vector<string> arr;
-    string nice = "";
-    for(int i =0; i < ((string) THANK_YOU).length(); i++) {
-        char c = THANK_YOU[i];
-        if(c == '\n') {
-            arr.push_back(nice);
-            nice = "";
-        }
-        nice+=c;
-    }
+    auto arr = splitStringToLines(THANK_YOU);
     for(string s : arr) {
         cout << s;
         MSleep(100);
