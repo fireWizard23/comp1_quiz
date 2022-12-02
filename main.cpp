@@ -412,7 +412,7 @@ int main()
         acout(playerName + ", you scored " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
         cout << endl << "----------------------------------------------------------------------------------------------------" << endl;
         MSleep(500);
-        cout << endl << "Press ENTER key to continue" << endl;
+        cout << endl << "Press ENTER key to continue..." << endl;
         while (true)
         {
             if (_kbhit() && getch() == KEY_ENTER)
