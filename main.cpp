@@ -407,8 +407,10 @@ int main()
             cout << endl;
             MSleep(20);
         }
-
+        cout << "----------------------------------------------------------------------------------------------------" << endl;
+        MSleep(100);
         acout(playerName + ", you scored " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
+        cout << endl << "----------------------------------------------------------------------------------------------------" << endl;
         MSleep(500);
         cout << endl << "Press ENTER key to continue" << endl;
         while (true)
