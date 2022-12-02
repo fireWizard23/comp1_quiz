@@ -353,6 +353,7 @@ int main()
         playerName += "...";
     }
 
+    // Main Loop
     while (true)
     {
         int chosenDifficulty = interactiveInput(playerName + ", please choose the difficulty", vector<string>{"Easy", "Medium", "Hard"});
@@ -440,7 +441,7 @@ int main()
             continue;
         }
         break;
-    }
+    } // End of main loop
 
     const string THANK_YOU = R"(
 ******** **  **     **     **   ** **   **    **    ** ******* **   **
