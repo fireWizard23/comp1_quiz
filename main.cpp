@@ -332,8 +332,20 @@ int main()
 
     clear_screen();
 
-    acout("What is your name? ");
-    getline(cin, playerName);
+    while(true) {
+        acout("What is your name? ");
+        getline(cin, playerName);
+        if(
+           all_of(playerName.cbegin(), playerName.cend(), [](char c) { return std::isspace(c); })
+        )
+        {
+
+            clear_screen();
+            continue;
+        }
+        break;
+    }
+
     bool nameExceededLength = playerName.length() >= 30;
     playerName = playerName.substr(0, 30);
     if (nameExceededLength)
