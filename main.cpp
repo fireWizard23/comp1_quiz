@@ -8,7 +8,6 @@
 
 using namespace std;
 
-const bool DEBUG = false;
 
 template <typename T>
 std::vector<T> create_copy(std::vector<T> const &vec)
@@ -126,16 +125,13 @@ void acout(string h, bool skippable = true, int ms = 20)
     {
         cout << c;
         index++;
-        if (!DEBUG)
+        MSleep(ms);
+        if (skippable && _kbhit())
         {
-            MSleep(ms);
-            if (skippable && _kbhit())
-            {
-                getch();
-                string rest = h.substr(index);
-                cout << rest;
-                break;
-            }
+            getch();
+            string rest = h.substr(index);
+            cout << rest;
+            break;
         }
     }
 }
@@ -164,10 +160,7 @@ void fakeLoading(string message, int ms = 1500)
             dots = 0;
         }
         loops--;
-        if (!DEBUG)
-        {
-            MSleep(MS);
-        }
+        MSleep(MS);
     }
 }
 
