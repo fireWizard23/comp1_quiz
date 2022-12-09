@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 template <typename T>
 std::vector<T> create_copy(std::vector<T> const &vec)
 {
@@ -24,7 +23,6 @@ void shuffle_vector(vector<T> &vec)
                         .count();
     shuffle(vec.begin(), vec.end(), default_random_engine(seed));
 }
-
 
 vector<string> splitStringToLines(string h)
 {
@@ -255,26 +253,26 @@ int interactiveInput(string label, vector<string> choices, string endLabel = "Pr
 
         switch (c = getch())
         {
-            case KEY_UP:
-            case KEY_W:
-                _index--;
-                if (_index < 0)
-                {
-                    _index = maxNum;
-                }
-                break;
-            case KEY_DOWN:
-            case KEY_S:
-                _index++;
-                if (_index > maxNum)
-                {
-                    _index = 0;
-                }
-                break;
-            case KEY_ENTER:
-            case KEY_SPACE:
-                looping = false;
-                break;
+        case KEY_UP:
+        case KEY_W:
+            _index--;
+            if (_index < 0)
+            {
+                _index = maxNum;
+            }
+            break;
+        case KEY_DOWN:
+        case KEY_S:
+            _index++;
+            if (_index > maxNum)
+            {
+                _index = 0;
+            }
+            break;
+        case KEY_ENTER:
+        case KEY_SPACE:
+            looping = false;
+            break;
         }
     }
     return _index;
@@ -309,14 +307,16 @@ int initiateQuiz(vector<Question> _questions)
     return score;
 }
 
-void waitForKey(int key=-1) {
+void waitForKey(int key = -1)
+{
 
     while (true)
     {
         if (_kbhit())
         {
             int k = getch();
-            if(key < 0 || k == key) {
+            if (key < 0 || k == key)
+            {
                 break;
             }
         }
@@ -338,12 +338,13 @@ int main()
 
     clear_screen();
 
-    while(true) {
+    while (true)
+    {
         acout("What is your name? ");
         getline(cin, playerName);
-        if(
-           all_of(playerName.cbegin(), playerName.cend(), [](char c) { return std::isspace(c); })
-        )
+        if (
+            all_of(playerName.cbegin(), playerName.cend(), [](char c)
+                   { return std::isspace(c); }))
         {
 
             clear_screen();
@@ -426,14 +427,16 @@ int main()
             cout << endl;
             Sleep(20);
         }
-        //Show score
+        // Show score
         cout << "----------------------------------------------------------------------------------------------------" << endl;
         Sleep(100);
         acout(playerName + ", you scored " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
-        cout << endl << "----------------------------------------------------------------------------------------------------" << endl;
+        cout << endl
+             << "----------------------------------------------------------------------------------------------------" << endl;
         Sleep(500);
 
-        cout << endl << "Press ENTER key to continue..." << endl;
+        cout << endl
+             << "Press ENTER key to continue..." << endl;
         waitForKey(KEY_ENTER);
         const vector<string> _ = {"Play again", "Quit"};
         int shouldQuit = interactiveInput("Play again?", _);
@@ -452,14 +455,16 @@ int main()
    **    **  ** **      ** **   ** **   **       **    ******* *******  **
    )";
 
-    cout << endl<< endl;
+    cout << endl
+         << endl;
     auto arr = splitStringToLines(THANK_YOU);
     for (string s : arr)
     {
         cout << s;
         Sleep(100);
     }
-    cout << endl << endl;
+    cout << endl
+         << endl;
 
     waitForKey();
 
