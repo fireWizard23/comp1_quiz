@@ -317,6 +317,20 @@ int initiateQuiz(vector<Question> _questions)
     return score;
 }
 
+void waitForKey(int key=-1) {
+
+    while (true)
+    {
+        if (_kbhit())
+        {
+            int k = getch();
+            if(key < 0 || k == key) {
+                break;
+            }
+        }
+    }
+}
+
 int main()
 {
     system("COLOR 02");
@@ -428,14 +442,7 @@ int main()
         MSleep(500);
 
         cout << endl << "Press ENTER key to continue..." << endl;
-        while (true)
-        {
-            if (_kbhit() && getch() == KEY_ENTER)
-            {
-
-                break;
-            }
-        }
+        waitForKey(KEY_ENTER);
         const vector<string> _ = {"Play again", "Quit"};
         int shouldQuit = interactiveInput("Play again?", _);
         if (shouldQuit == 0)
@@ -461,6 +468,8 @@ int main()
         MSleep(100);
     }
     cout << endl << endl;
+
+    waitForKey();
 
     return 0;
 }
