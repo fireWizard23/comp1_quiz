@@ -25,7 +25,6 @@ void shuffle_vector(vector<T> &vec)
     shuffle(vec.begin(), vec.end(), default_random_engine(seed));
 }
 
-void MSleep(int ms) { Sleep(ms); }
 
 vector<string> splitStringToLines(string h)
 {
@@ -125,7 +124,7 @@ void acout(string h, bool skippable = true, int ms = 20)
     {
         cout << c;
         index++;
-        MSleep(ms);
+        Sleep(ms);
         if (skippable && _kbhit())
         {
             getch();
@@ -160,7 +159,7 @@ void fakeLoading(string message, int ms = 1500)
             dots = 0;
         }
         loops--;
-        MSleep(MS);
+        Sleep(MS);
     }
 }
 
@@ -208,7 +207,7 @@ int interactiveInput(string label, vector<string> choices, string endLabel = "Pr
 
     clear_screen();
     acout(label + "\n\n");
-    MSleep(75);
+    Sleep(75);
     for (string h : choices)
     {
         if (_index == choiceIndex)
@@ -225,7 +224,7 @@ int interactiveInput(string label, vector<string> choices, string endLabel = "Pr
 
         cout << "\n";
         choiceIndex++;
-        MSleep(75);
+        Sleep(75);
     }
     acout("\n" + endLabel);
     while (looping)
@@ -385,7 +384,7 @@ int main()
         shuffle_vector(questionToAnswer);
 
         fakeLoading("Loading questions", questionToAnswer.size() * 100);
-        MSleep(100);
+        Sleep(100);
 
         int score = initiateQuiz(questionToAnswer);
         clear_screen();
@@ -393,7 +392,7 @@ int main()
         // Render fake checking...
         fakeLoading("Checking results", questionToAnswer.size() * 100);
 
-        MSleep(100);
+        Sleep(100);
         clear_screen();
 
         // Render history
@@ -422,17 +421,17 @@ int main()
                 }
                 cout << endl;
                 choiceIndex++;
-                MSleep(20);
+                Sleep(20);
             }
             cout << endl;
-            MSleep(20);
+            Sleep(20);
         }
         //Show score
         cout << "----------------------------------------------------------------------------------------------------" << endl;
-        MSleep(100);
+        Sleep(100);
         acout(playerName + ", you scored " + to_string(score) + "/" + to_string(questionToAnswer.size()) + " points");
         cout << endl << "----------------------------------------------------------------------------------------------------" << endl;
-        MSleep(500);
+        Sleep(500);
 
         cout << endl << "Press ENTER key to continue..." << endl;
         waitForKey(KEY_ENTER);
@@ -458,7 +457,7 @@ int main()
     for (string s : arr)
     {
         cout << s;
-        MSleep(100);
+        Sleep(100);
     }
     cout << endl << endl;
 
