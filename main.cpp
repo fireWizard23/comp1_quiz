@@ -213,9 +213,9 @@ vector<Question> easyQuestions = {
     Question(
         "Which character inserts a new line in C++?",
         "\\n",
-        {"\f",
-         "\d",
-         "\i"}),
+        {"\\f",
+         "\\d",
+         "\\i"}),
 
     Question(
         "Which of the following operators is to be used to add increment in C++?",
