@@ -161,13 +161,77 @@ void fakeLoading(string message, int ms = 1500)
     }
 }
 
-
-
 vector<Question> easyQuestions = {
-    Question("Easy Who invented the first calculator?", "Correct Answer", {"Wrong", "Eminem", "Dwayne Johnson"}),
-    Question("Easy Who invented the second calculator?", "Correct Answer", {"Jackie Chad", "Willie Wonka", "Dwayne Johnson"}),
-    Question("Easy Who invented the third calculator?", "Correct Answer", {"Luffy Uzumaki", "Blue", "The rock"}),
-    Question("Easy Who invented the last calculator?", "Correct Answer", {"Nice Person", "Bruce", "Dwayne Lee"})};
+    Question(
+        "What programming language is C++?",
+        "Object-Oriented Language",
+        {"Functional Programming Language",
+         "Scripting Language",
+         "Logic Programming Language"}),
+
+    Question(
+        "Who developed C++?",
+        "Bjarne Stroustrup",
+        {"James Gosling",
+         "Guido van Rossum",
+         "Tim Berners-Lee"}),
+
+    Question(
+        "What object does C++ use?",
+        "cout and cin",
+        {"printf and stdin",
+         "class and break",
+         "del and with"}),
+
+    Question(
+        "Which of the following IDEs are used for C++?",
+        "CodeBlocks",
+        {"Eclipse",
+         "BlueJ",
+         "PyCharm"}),
+
+    Question(
+        "What header file is used in C++?",
+        "iostream",
+        {"stdio.h",
+         "HelloWorld.h",
+         "syntax"}),
+
+    Question(
+        "What variable is to be used to create user input in C++?",
+        "cin",
+        {"scanf",
+         "cout",
+         "printf"}),
+
+    Question(
+        "Which of the following operators is to be used to divide values in C++?",
+        "/",
+        {"*",
+         "\\",
+         "|"}),
+    Question(
+        "Which character inserts a new line in C++?",
+        "\\n",
+        {"\f",
+         "\d",
+         "\i"}),
+
+    Question(
+        "Which of the following operators is to be used to add increment in C++?",
+        "++",
+        {"==",
+         "--",
+         "\/\/"}),
+
+    Question(
+        "Which of the following operators is to be used to multiply values in C++?",
+        "*",
+        {"x",
+         "()",
+         "^"})
+    };
+
 
 vector<Question> mediumQuestions = {
     Question("Medium Who invented the second calculator?", "Correct Answer", {"Jackie Chad", "Willie Wonka", "Dwayne Johnson"}),
