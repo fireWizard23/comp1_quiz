@@ -229,117 +229,178 @@ vector<Question> easyQuestions = {
         "*",
         {"x",
          "()",
-         "^"})
-    };
-
+         "^"})};
 
 vector<Question> mediumQuestions = {
- Question(
-    "Define the data type \"char\" in C++.",
-    "Stores a single character/letter/number or ASCII values.",
-    {
-        "Used for a combination of any characters that appear on a keyboard, such as letters, numbers, and symbols.",
-        "Used to display various compiler or linker messages.",
-        "Used for whole numbers."
-    }
-    ),
+    Question(
+        "Define the data type \"char\" in C++.",
+        "Stores a single character/letter/number or ASCII values.",
+        {"Used for a combination of any characters that appear on a keyboard, such as letters, numbers, and symbols.",
+         "Used to display various compiler or linker messages.",
+         "Used for whole numbers."}),
 
-Question(
-    "Define the data type \"boolean\" in C++.",
-    "Used where data is restricted to True/False or yes/no options.",
-    {
-        "Stores a single character/letter/number, or ASCII values.",
-        "Used for a combination of any characters that appear on a keyboard, such as letters, numbers, and symbols.",
-        "Used for whole numbers."
-    }
-    ),
-    
-Question(
-    "Define the data type \"float\" in C++.",
-    "Used for numbers that contain decimal points, or for fractions. Sufficient for storing 7 decimal digits.",
-    {
-        "Stores a single character/letter/number, or ASCII values.",
+    Question(
+        "Define the data type \"boolean\" in C++.",
         "Used where data is restricted to True/False or yes/no options.",
-        "Used for whole numbers."
-    }
-    ),
-    
-Question(
-    "What are strings used for?",
-    "Used for storing text. For a combination of any characters that appear on a keyboard, such as letters, numbers, and symbols.",
-    {
+        {"Stores a single character/letter/number, or ASCII values.",
+         "Used for a combination of any characters that appear on a keyboard, such as letters, numbers, and symbols.",
+         "Used for whole numbers."}),
+
+    Question(
+        "Define the data type \"float\" in C++.",
         "Used for numbers that contain decimal points, or for fractions. Sufficient for storing 7 decimal digits.",
-        "Used where data is restricted to True/False or yes/no options.",
-        "Used for whole numbers."
-    }
-    ),
+        {"Stores a single character/letter/number, or ASCII values.",
+         "Used where data is restricted to True/False or yes/no options.",
+         "Used for whole numbers."}),
 
-Question(
-    "What is a comment in C++ code?",
-    "Used to explain C++ code, and to make it more readable.",
-    {
-        "Used to teach how to properly use C code.",
-        "To declare a code.",
-        "Clarifies the content."
-    }
-    ),
+    Question(
+        "What are strings used for?",
+        "Used for storing text. For a combination of any characters that appear on a keyboard, such as letters, numbers, and symbols.",
+        {"Used for numbers that contain decimal points, or for fractions. Sufficient for storing 7 decimal digits.",
+         "Used where data is restricted to True/False or yes/no options.",
+         "Used for whole numbers."}),
 
-Question(
-    "Which library allows us to work with files?",
-    "fstream",
-    {
-        "iostream",
-        "include",
-        "iosmain"
-    }
-    ),
-    
-Question(
-    "Which of the following is an access specifier?",
-    "Public",
-    {
-        "Private",
-        "Urban",
-        "Rural"
-    }
-    ),
+    Question(
+        "What is a comment in C++ code?",
+        "Used to explain C++ code, and to make it more readable.",
+        {"Used to teach how to properly use C code.",
+         "To declare a code.",
+         "Clarifies the content."}),
 
-Question(
-    "This indicates the end of one logical entity.",
-    "Semicolon",
-    {
-        "Bracket",
-        "Period",
-        "None of the above."
-    }
-    ),
-    
-Question(
-    "Which keyword is used to create a structure?",
-    "Struct",
-    {
-        "Strctr",
-        "Structure",
-        "Std"
-    }
-    ),
+    Question(
+        "Which library allows us to work with files?",
+        "fstream",
+        {"iostream",
+         "include",
+         "iosmain"}),
 
-Question(
-    "How do you insert comments in C++ code?",
-    "//insert a comment",
-    {
-        "*/insert a comment",
-        "*insert a comment",
-        "*insert a comment*"
-    }
-    )
-};
+    Question(
+        "Which of the following is an access specifier?",
+        "Public",
+        {"Private",
+         "Urban",
+         "Rural"}),
+
+    Question(
+        "This indicates the end of one logical entity.",
+        "Semicolon",
+        {"Bracket",
+         "Period",
+         "None of the above."}),
+
+    Question(
+        "Which keyword is used to create a structure?",
+        "Struct",
+        {"Strctr",
+         "Structure",
+         "Std"}),
+
+    Question(
+        "How do you insert comments in C++ code?",
+        "//insert a comment",
+        {"*/insert a comment",
+         "*insert a comment",
+         "*insert a comment*"})};
 
 vector<Question> hardQuestions = {
-    Question("Hard Who invented the first calculator?", "Correct Answer", {"Wrong", "Eminem", "Dwayne Johnson"}),
-    Question("Hard Who invented the second calculator?", "Correct Answer", {"Jackie Chad", "Willie Wonka", "Dwayne Johnson"}),
-    Question("Hard Who invented the third calculator?", "Correct Answer", {"Luffy Uzumaki", "Blue", "The rock"}),
-    Question("Hard Who invented the last calculator?", "Correct Answer", {"Nice Person", "Bruce", "Dwayne Lee"})};
+    Question(
+        "Define constructors.",
+        "A special method that is automatically called when an object of a class is created.",
+        {"A graphical representation of a computer program in relation to its sequence of functions.",
+         "A diagram of the sequence of movements or actions of people or things involved in a complex system or activity.",
+         "A set of steps or instruction statements to be followed to accomplish specific tasks."}),
+
+    Question(
+        "What is ofstream class?",
+        "Creates and writes to files. This data type represents the output file stream and is used to create files and to write information to files.",
+        {"This data type represents the input file stream and is used to read information from files.",
+         "Provides basic input and output services for C++ programs.",
+         "A way of including a standard or user-defined file in the program and is mostly written at the beginning of any C/C++ program."}),
+
+    Question(
+        "What is a structure?",
+        "A way to group several related variables into one place.",
+        {"The set of facilities and systems that encompasses the services and facilities necessary for its economy, households, and firms to function.",
+         "The arrangement of and relations between the parts or elements of something complex.",
+         "Construct or arrange according to a plan; give a pattern or organization to."}),
+
+    Question(
+        "What is the difference between C++ and C?",
+        "C++ supports classes and objects while C does not.",
+        {"C++ is a pre-compiled programming language and doesn't need any interpreter during compilation while C is an interpreted language, and it runs through an interpreter during compilation.",
+         "C++ and C have different code structure and compilation.",
+         "There is no difference between the two."}),
+
+    Question(
+        "What is the similarity between C++ and C?",
+        "Both languages have almost the same syntax.",
+        {"Function and operator overloading are both supported by C and C++.",
+         "They both use printf to display the output.",
+         "Data and functions are separated in C++, as well as C."}),
+
+    Question(
+        "How do we use \"if...else\" statement in C++?",
+        "\"if...else\" statement is used if a condition is true and another code if that condition is false.",
+        {"\"if...else\" statement is used if a condition is false and another code if that condition is false.",
+         "\"if...else\" statement is used if a condition is true and another code if that condition is true",
+         "None of the above."}),
+
+    Question(
+        "What is the correct syntax to output \"Hello World\" in C++?",
+        "cout<< \"Hello World\";",
+        {"print(\"Hello World\");",
+         "Console.WriteLine(\"Hello World\");",
+         "std::cout<\"Hello Word\";"}),
+    Question(
+        R"(What is the output of the following program?
+        
+        #include<iostream>
+        using namespace std;
+
+        int myFunction(int x) {
+            return 5 + x;
+        }
+        
+        int main() {
+            cout << myFunction(3);
+            return 0;
+        })",
+        "8",
+        {"3",
+         "Error",
+         "No output."}),
+    Question(
+        R"(Find the error in the following program:
+        #include<iostream>
+        using namespace std;
+
+        int main() {
+            int i = 0;
+            while(i = 0; i < 3; i++) {
+                cout << i;
+            }
+            return 0;
+        }
+        )",
+        "while",
+        {"main",
+         "return",
+         "No error"}),
+    Question(
+        R"(Find the error in the following program:
+        #include<iostream>
+        using namespace std;
+
+        void main() {
+            char s[] = \"hello\", t[] = \"hello\";
+            if(s == t)
+                cout << \"Equal strings\";
+        }
+        )",
+        "No output",
+        {"Error",
+         "Equal strings",
+         "hello"})};
 
 string prefixes[4] = {"1. ", "2. ", "3. ", "4. "};
 
