@@ -222,7 +222,7 @@ vector<Question> easyQuestions = {
         "++",
         {"==",
          "--",
-         "\/\/"}),
+         "\\/\\/"}),
 
     Question(
         "Which of the following operators is to be used to multiply values in C++?",
