@@ -161,6 +161,8 @@ void fakeLoading(string message, int ms = 1500)
     }
 }
 
+
+
 vector<Question> easyQuestions = {
     Question("Easy Who invented the first calculator?", "Correct Answer", {"Wrong", "Eminem", "Dwayne Johnson"}),
     Question("Easy Who invented the second calculator?", "Correct Answer", {"Jackie Chad", "Willie Wonka", "Dwayne Johnson"}),
@@ -168,7 +170,6 @@ vector<Question> easyQuestions = {
     Question("Easy Who invented the last calculator?", "Correct Answer", {"Nice Person", "Bruce", "Dwayne Lee"})};
 
 vector<Question> mediumQuestions = {
-    Question("Medium Who invented the first calculator?", "Correct Answer", {"Wrong", "Eminem", "Dwayne Johnson"}),
     Question("Medium Who invented the second calculator?", "Correct Answer", {"Jackie Chad", "Willie Wonka", "Dwayne Johnson"}),
     Question("Medium Who invented the third calculator?", "Correct Answer", {"Luffy Uzumaki", "Blue", "The rock"}),
     Question("Medium Who invented the last calculator?", "Correct Answer", {"Nice Person", "Bruce", "Dwayne Lee"})};
@@ -326,7 +327,7 @@ void waitForKey(int key = -1)
 int main()
 {
     system("COLOR 02");
-    vector<string> menuChoices = {"Play", "Exit"};
+    vector<string> menuChoices = {"Start Game", "Quit Game"};
 
     switch (interactiveInput("Welcome to Quiz", menuChoices))
     {
@@ -340,7 +341,7 @@ int main()
 
     while (true)
     {
-        acout("What is your name? ");
+        acout("Enter username: ");
         getline(cin, playerName);
         if (
             all_of(playerName.cbegin(), playerName.cend(), [](char c)
