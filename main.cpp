@@ -177,7 +177,7 @@ vector<Question> easyQuestions = {
          "Tim Berners-Lee"}),
 
     Question(
-        "What object does C++ use?",
+        "What input/output methods does C++ use?",
         "cout and cin",
         {"printf and stdin",
          "class and break",
@@ -353,34 +353,36 @@ vector<Question> hardQuestions = {
          "std::cout<\"Hello Word\";"}),
     Question(
         R"(What is the output of the following program?
-        
-        #include<iostream>
-        using namespace std;
 
-        int myFunction(int x) {
-            return 5 + x;
-        }
-        
-        int main() {
-            cout << myFunction(3);
-            return 0;
-        })",
+    #include<iostream>
+    using namespace std;
+
+    int myFunction(int x) {
+        return 5 + x;
+    }
+
+    int main() {
+        cout << myFunction(3);
+        return 0;
+    }
+        )",
         "8",
         {"3",
          "Error",
          "No output."}),
     Question(
         R"(Find the error in the following program:
-        #include<iostream>
-        using namespace std;
 
-        int main() {
-            int i = 0;
-            while(i = 0; i < 3; i++) {
-                cout << i;
-            }
-            return 0;
+    #include<iostream>
+    using namespace std;
+
+    int main() {
+        int i = 0;
+        while(i = 0; i < 3; i++) {
+            cout << i;
         }
+        return 0;
+    }
         )",
         "while",
         {"main",
@@ -388,14 +390,15 @@ vector<Question> hardQuestions = {
          "No error"}),
     Question(
         R"(Find the error in the following program:
-        #include<iostream>
-        using namespace std;
 
-        void main() {
-            char s[] = \"hello\", t[] = \"hello\";
-            if(s == t)
-                cout << \"Equal strings\";
-        }
+    #include<iostream>
+    using namespace std;
+
+    void main() {
+        char s[] = \"hello\", t[] = \"hello\";
+        if(s == t)
+            cout << \"Equal strings\";
+    }
         )",
         "No output",
         {"Error",
