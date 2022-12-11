@@ -234,9 +234,106 @@ vector<Question> easyQuestions = {
 
 
 vector<Question> mediumQuestions = {
-    Question("Medium Who invented the second calculator?", "Correct Answer", {"Jackie Chad", "Willie Wonka", "Dwayne Johnson"}),
-    Question("Medium Who invented the third calculator?", "Correct Answer", {"Luffy Uzumaki", "Blue", "The rock"}),
-    Question("Medium Who invented the last calculator?", "Correct Answer", {"Nice Person", "Bruce", "Dwayne Lee"})};
+ Question(
+    "Define the data type \"char\" in C++.",
+    "Stores a single character/letter/number or ASCII values.",
+    {
+        "Used for a combination of any characters that appear on a keyboard, such as letters, numbers, and symbols.",
+        "Used to display various compiler or linker messages.",
+        "Used for whole numbers."
+    }
+    ),
+
+Question(
+    "Define the data type \"boolean\" in C++.",
+    "Used where data is restricted to True/False or yes/no options.",
+    {
+        "Stores a single character/letter/number, or ASCII values.",
+        "Used for a combination of any characters that appear on a keyboard, such as letters, numbers, and symbols.",
+        "Used for whole numbers."
+    }
+    ),
+    
+Question(
+    "Define the data type \"float\" in C++.",
+    "Used for numbers that contain decimal points, or for fractions. Sufficient for storing 7 decimal digits.",
+    {
+        "Stores a single character/letter/number, or ASCII values.",
+        "Used where data is restricted to True/False or yes/no options.",
+        "Used for whole numbers."
+    }
+    ),
+    
+Question(
+    "What are strings used for?",
+    "Used for storing text. For a combination of any characters that appear on a keyboard, such as letters, numbers, and symbols.",
+    {
+        "Used for numbers that contain decimal points, or for fractions. Sufficient for storing 7 decimal digits.",
+        "Used where data is restricted to True/False or yes/no options.",
+        "Used for whole numbers."
+    }
+    ),
+
+Question(
+    "What is a comment in C++ code?",
+    "Used to explain C++ code, and to make it more readable.",
+    {
+        "Used to teach how to properly use C code.",
+        "To declare a code.",
+        "Clarifies the content."
+    }
+    ),
+
+Question(
+    "Which library allows us to work with files?",
+    "fstream",
+    {
+        "iostream",
+        "include",
+        "iosmain"
+    }
+    ),
+    
+Question(
+    "Which of the following is an access specifier?",
+    "Public",
+    {
+        "Private",
+        "Urban",
+        "Rural"
+    }
+    ),
+
+Question(
+    "This indicates the end of one logical entity.",
+    "Semicolon",
+    {
+        "Bracket",
+        "Period",
+        "None of the above."
+    }
+    ),
+    
+Question(
+    "Which keyword is used to create a structure?",
+    "Struct",
+    {
+        "Strctr",
+        "Structure",
+        "Std"
+    }
+    ),
+
+Question(
+    "How do you insert comments in C++ code?",
+    "//insert a comment",
+    {
+        "*/insert a comment",
+        "*insert a comment",
+        "*insert a comment*"
+    }
+    )
+};
 
 vector<Question> hardQuestions = {
     Question("Hard Who invented the first calculator?", "Correct Answer", {"Wrong", "Eminem", "Dwayne Johnson"}),
