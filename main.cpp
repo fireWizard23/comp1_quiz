@@ -8,6 +8,20 @@
 
 using namespace std;
 
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_ENTER 13
+#define KEY_SPACE 32
+#define KEY_W 119
+#define KEY_S 115
+
+const std::string reset("\033[32;40m");
+const std::string magenta("\033[0;35m");
+
+string prefixes[4] = {"1. ", "2. ", "3. ", "4. "};
+string playerName = "UNDEFINED";
+
+
 template <typename T>
 std::vector<T> create_copy(std::vector<T> const &vec)
 {
@@ -160,6 +174,23 @@ void fakeLoading(string message, int ms = 1500)
         Sleep(MS);
     }
 }
+
+void waitForKey(int key = -1)
+{
+
+    while (true)
+    {
+        if (_kbhit())
+        {
+            int k = getch();
+            if (key < 0 || k == key)
+            {
+                break;
+            }
+        }
+    }
+}
+
 
 vector<Question> easyQuestions = {
     Question(
@@ -405,21 +436,9 @@ vector<Question> hardQuestions = {
          "Equal strings",
          "hello"})};
 
-string prefixes[4] = {"1. ", "2. ", "3. ", "4. "};
-
 vector<QuestionHistory> history = {};
 
-string playerName = "UNDEFINED";
 
-#define KEY_UP 72
-#define KEY_DOWN 80
-#define KEY_ENTER 13
-#define KEY_SPACE 32
-#define KEY_W 119
-#define KEY_S 115
-
-const std::string reset("\033[32;40m");
-const std::string magenta("\033[0;35m");
 
 int interactiveInput(string label, vector<string> choices, string endLabel = "Press ENTER/SPACE to select. Arrow keys to move. \n")
 {
@@ -533,21 +552,6 @@ int initiateQuiz(vector<Question> _questions)
     return score;
 }
 
-void waitForKey(int key = -1)
-{
-
-    while (true)
-    {
-        if (_kbhit())
-        {
-            int k = getch();
-            if (key < 0 || k == key)
-            {
-                break;
-            }
-        }
-    }
-}
 
 int main()
 {
