@@ -277,7 +277,7 @@ vector<Question> mediumQuestions = {
     Question(
         "Which of the following is an access specifier?",
         "Public",
-        {"Private",
+        {"Void",
          "Urban",
          "Rural"}),
 
