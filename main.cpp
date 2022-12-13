@@ -28,7 +28,7 @@ vector<string> splitStringToLines(string h)
 {
     vector<string> arr;
     string nice = "";
-    for (unsigned int i = 0; i < h.length(); i++)
+    for (int i = 0; i < h.length(); i++)
     {
         char c = h[i];
         if (c == '\n')
