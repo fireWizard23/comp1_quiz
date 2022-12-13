@@ -8,12 +8,12 @@
 
 using namespace std;
 
-#define KEY_UP 72
-#define KEY_DOWN 80
-#define KEY_ENTER 13
-#define KEY_SPACE 32
-#define KEY_W 119
-#define KEY_S 115
+const int KEY_UP = 72;
+const int KEY_DOWN = 80;
+const int KEY_ENTER = 13;
+const int KEY_SPACE = 32;
+const int KEY_W = 119;
+const int KEY_S = 115;
 
 const std::string reset("\033[32;40m");
 const std::string magenta("\033[0;35m");
