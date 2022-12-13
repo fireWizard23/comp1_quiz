@@ -8,6 +8,8 @@
 
 using namespace std;
 
+// -------------------------- START - Constants  --------------------------
+
 const int KEY_UP = 72;
 const int KEY_DOWN = 80;
 const int KEY_ENTER = 13;
@@ -17,10 +19,9 @@ const int KEY_S = 115;
 
 const std::string reset("\033[32;40m");
 const std::string magenta("\033[0;35m");
+// -------------------------- END - Constants  --------------------------
 
-string prefixes[4] = {"1. ", "2. ", "3. ", "4. "};
-string playerName = "UNDEFINED";
-
+// -------------------------- START - Structs Definitions  --------------------------
 
 template <typename T>
 std::vector<T> create_copy(std::vector<T> const &vec)
@@ -112,6 +113,9 @@ public:
     }
 };
 
+// -------------------------- END - Structs Definitions  --------------------------
+
+// -------------------------- START - General Functions --------------------------
 bool validateInput(int input)
 {
     if (input <= 0 || input > 4)
@@ -191,6 +195,92 @@ void waitForKey(int key = -1)
     }
 }
 
+int interactiveInput(string label, vector<string> choices, string endLabel = "Press ENTER/SPACE to select. Arrow keys to move. \n")
+{
+    int _index = 0;
+    int c = 0;
+    bool looping = true;
+    int choiceIndex = 0;
+    int maxNum = choices.size() - 1;
+
+    clear_screen();
+    acout(label + "\n\n");
+    Sleep(75);
+    for (string h : choices)
+    {
+        if (_index == choiceIndex)
+        {
+            cout << magenta;
+            cout << "=>";
+        }
+        else
+        {
+            cout << "  ";
+        }
+        cout << h;
+        cout << reset;
+
+        cout << "\n";
+        choiceIndex++;
+        Sleep(75);
+    }
+    acout("\n" + endLabel);
+    while (looping)
+    {
+        choiceIndex = 0;
+        clear_screen();
+        cout << label << endl
+             << endl;
+
+        for (string h : choices)
+        {
+            if (_index == choiceIndex)
+            {
+                cout << magenta;
+                cout << "=>";
+            }
+            else
+            {
+                cout << "  ";
+            }
+            cout << h;
+            cout << reset;
+            cout << endl;
+            choiceIndex++;
+        }
+        cout << endl
+             << endLabel;
+
+        switch (c = getch())
+        {
+        case KEY_UP:
+        case KEY_W:
+            _index--;
+            if (_index < 0)
+            {
+                _index = maxNum;
+            }
+            break;
+        case KEY_DOWN:
+        case KEY_S:
+            _index++;
+            if (_index > maxNum)
+            {
+                _index = 0;
+            }
+            break;
+        case KEY_ENTER:
+        case KEY_SPACE:
+            looping = false;
+            break;
+        }
+    }
+    return _index;
+}
+
+// -------------------------- END - General Functions --------------------------
+
+// -------------------------- START - Main code --------------------------
 
 vector<Question> easyQuestions = {
     Question(
@@ -438,90 +528,7 @@ vector<Question> hardQuestions = {
 
 vector<QuestionHistory> history = {};
 
-
-
-int interactiveInput(string label, vector<string> choices, string endLabel = "Press ENTER/SPACE to select. Arrow keys to move. \n")
-{
-    int _index = 0;
-    int c = 0;
-    bool looping = true;
-    int choiceIndex = 0;
-    int maxNum = choices.size() - 1;
-
-    clear_screen();
-    acout(label + "\n\n");
-    Sleep(75);
-    for (string h : choices)
-    {
-        if (_index == choiceIndex)
-        {
-            cout << magenta;
-            cout << "=>";
-        }
-        else
-        {
-            cout << "  ";
-        }
-        cout << h;
-        cout << reset;
-
-        cout << "\n";
-        choiceIndex++;
-        Sleep(75);
-    }
-    acout("\n" + endLabel);
-    while (looping)
-    {
-        choiceIndex = 0;
-        clear_screen();
-        cout << label << endl
-             << endl;
-
-        for (string h : choices)
-        {
-            if (_index == choiceIndex)
-            {
-                cout << magenta;
-                cout << "=>";
-            }
-            else
-            {
-                cout << "  ";
-            }
-            cout << h;
-            cout << reset;
-            cout << endl;
-            choiceIndex++;
-        }
-        cout << endl
-             << endLabel;
-
-        switch (c = getch())
-        {
-        case KEY_UP:
-        case KEY_W:
-            _index--;
-            if (_index < 0)
-            {
-                _index = maxNum;
-            }
-            break;
-        case KEY_DOWN:
-        case KEY_S:
-            _index++;
-            if (_index > maxNum)
-            {
-                _index = 0;
-            }
-            break;
-        case KEY_ENTER:
-        case KEY_SPACE:
-            looping = false;
-            break;
-        }
-    }
-    return _index;
-}
+string playerName = "UNDEFINED";
 
 int initiateQuiz(vector<Question> _questions)
 {
@@ -552,13 +559,11 @@ int initiateQuiz(vector<Question> _questions)
     return score;
 }
 
-
 int main()
 {
-    system("COLOR 02");
-    vector<string> menuChoices = {"Start Game", "Quit Game"};
+    system("COLOR 02"); // Change console color
 
-    switch (interactiveInput("Welcome to Quiz", menuChoices))
+    switch (interactiveInput("Welcome to Quiz", {"Start Game", "Quit Game"}))
     {
     case 0:
         break;
